@@ -124,7 +124,9 @@ class OpenSearchBaseTestCase(TestCase):
         self.addCleanup(patcher.stop)
         return patcher.start()
 
-    def configure_search_engine_mock_to_return_itself_in_the_search_engine_constructor(self):
+    def configure_search_engine_mock_to_return_itself_in_the_search_engine_constructor(
+        self,
+    ):
         self.os_mock.indices = self.indices_mock
         self.os_mock = self.os_mock.return_value
 
@@ -618,7 +620,9 @@ class OpenSearchIntegrationBaseTestCase(TestCase):
     def try_push_data_to_index(self, bulk_data):
         for attempt in range(3):
             try:
-                self.search_engine.bulk(bulk_data, index=self.INDEX, refresh=True, timeout=30)
+                self.search_engine.bulk(
+                    bulk_data, index=self.INDEX, refresh=True, timeout=30
+                )
                 return
             except Exception as e:
                 time.sleep(10)

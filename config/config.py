@@ -98,6 +98,7 @@ class Configuration:
         self.companies_database_port = os.environ.get("POSTGRES_PORT", "")
         self.opensearch_user = os.environ.get("QUERIDO_DIARIO_OPENSEARCH_USER", "")
         self.opensearch_pswd = os.environ.get("QUERIDO_DIARIO_OPENSEARCH_PASSWORD", "")
+
     @classmethod
     def _load_list(cls, key, default=[]):
         value = os.environ.get(key, default)
